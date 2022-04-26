@@ -1,0 +1,41 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <section>
+    <div class="container-xxl">
+        <div class="row align align-items-center">
+            <div class="col-7">
+                <h1>{{ city_name }}</h1>
+            </div>
+            <div class="col-5">
+                <img class="w-100" style="max-width: 100%;" src="https://c.tenor.com/RL5ROk4bVNgAAAAM/billy-herrington-smoke.gif" alt="Billy">
+            </div>
+        </div>
+    </div>
+</section>
+    <section>
+        <div class="container-xxl">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="row">
+                    {% for place in places %}
+                        <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                {% if place.place_image %}
+                                    <img slass="card-img-top" src="{{ place.place_image.url }}">
+                                {% else %}
+                                    <img src="https://c.tenor.com/gJVDguhepHcAAAAM/gachi-billy-herrington.gif"
+                                         class="card-img-top" alt="...">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ place.name }}</h5>
+                                    <p class="card-text">{{ place.description }}</p>
+                                    <a href="{% url 'detail' place.slug %}" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <section>
+        <div class="container-xxl">
+            <div class="row align align-items-center">
+                <div class="col-7">
+                    <h1>{{ places.name }}</h1>
+                    <h3>{{ places.location.name }}, {{ places.location. }}</h3>
+                </div>
+                <div class="col-5">
+                    {% if places.place_image %}
+                        <img slass="w-100" style="max-width: 100%;" src="{{ places.place_image.url }}">
+                    {% else %}
+                        <img src="https://c.tenor.com/gJVDguhepHcAAAAM/gachi-billy-herrington.gif"
+                             class="card-img-top" alt="...">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-xxl">
+            <p>{{ places.description }}</p>
+        </div>
+    </section>
+{% endblock content %}
