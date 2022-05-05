@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <section>
+        <div class="container-xxl">
+            <div class="row align align-items-center">
+                <div class="col-7">
+                    <h1>Create an account</h1>
+                </div>
+                <div class="col-5">
+                    <p>Please, sign up using the following form:</p>
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        <p><input type="submit" value="Create my account"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
