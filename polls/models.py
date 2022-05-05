@@ -9,7 +9,7 @@ class Place(models.Model):
     description = models.TextField(blank=True)
     place_image = models.ImageField(upload_to='place_photos/%Y/%m/%d/', blank=True)
     likes = models.ManyToManyField(User, related_name='my_likes', blank=True, null=True)
-    location = models.ForeignKey('city', on_delete=models.PROTECT, null=True)
+    location = models.ForeignKey('location', on_delete=models.PROTECT, null=True)
     category = models.ForeignKey('category', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
@@ -30,7 +30,7 @@ class Location(models.Model):
     subway_station = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return self.address
+        return self.city.name + ', ' + self.address
 
 
 class City(models.Model):

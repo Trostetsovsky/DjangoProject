@@ -19,7 +19,7 @@
             <h2>Our Buddy's</h2>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="row">
-                    {% for place in places %}
+                    {% for place in page_obj %}
                         <div class="col">
                             <div class="card" style="width: 18rem;">
                                 {% if place.place_image %}
@@ -40,4 +40,21 @@
             </div>
         </div>
     </section>
+    {% if page_obj.has_other_pages %}
+    <nav>
+        <ul class="pagination justify-content-center">
+            {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
 {% endblock content %}
