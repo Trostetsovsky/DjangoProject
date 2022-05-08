@@ -30,7 +30,19 @@ def index(request):
 
 
 # class IndexHome(ListView):
+#     paginate_by = 2
 #     model = Place
+#     template_name = 'polls/index.html'
+#     context_object_name = 'places'
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Главная'
+#         context['city_list'] = city_list
+#         return context
+
+    # def get_queryset(self):
+    #     return Place.objects.all()
 
 
 def detail(request, place_slug):
@@ -57,6 +69,23 @@ def city(request, city_name):
         'title': city_name,
     }
     return render(request, 'polls/city_detail.html', context=context)
+
+
+# class CityIndexHome(ListView):
+#     paginate_by = 2
+#     model = Place
+#     template_name = 'polls/city_detail.html'
+#     context_object_name = 'places'
+#
+#     def get_queryset(self):
+#         return Place.objects.filter(location__city__slug=self.kwargs['city_name'])
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['city_name'] = self.kwargs['city_name']
+#         context['city_list'] = city_list
+#         context['title'] = context['city_name']
+#         return context
 
 
 # class SearchResults(ListView):
